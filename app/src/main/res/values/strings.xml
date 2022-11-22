@@ -9,4 +9,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="pseudonyme">Pseudonyme</string>
+    <string name="entrer">Entrer</string>
+    <string name="sorts">Sorts</string>
+    <string name="attaquer">Attaquer</string>
+    <string name="objets">Objets</string>
+    <string name="fuir">Fuir</string>
 </resources>

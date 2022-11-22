@@ -2,23 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Game"
-    android:id="@+id/Background">
+    tools:context=".Game">
 
 
     <EditText
         android:id="@+id/Pseudo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:background="@color/white"
         android:ems="10"
-        android:hint="Pseudonyme"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
+        android:hint="@string/pseudonyme"
         android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,11 +30,83 @@
         android:id="@+id/Entrer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entrer"
+        android:text="@string/entrer"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Pseudo" />
+
+    <TableLayout
+        android:layout_width="536dp"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        android:visibility="invisible"
+        android:id="@+id/IntfCombat">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn"
+
+                android:text="@string/sorts"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/objets"
+                android:textColor="@color/white"
+                android:background="@drawable/btn"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/attaquer"
+                android:textColor="@color/white"
+                android:background="@drawable/btn"/>
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fuir"
+                android:textColor="@color/white"
+                android:background="@drawable/btn"
+                />
+        </TableRow>
+
+    </TableLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="293dp"
+        android:layout_height="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/Pseudo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:progress="75"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
