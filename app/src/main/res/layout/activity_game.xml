@@ -4,6 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Game">
+    android:background="@drawable/background"
+    tools:context=".Game"
+    android:id="@+id/Background">
+
+
+    <EditText
+        android:id="@+id/Pseudo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Pseudonyme"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Entrer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pseudo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
