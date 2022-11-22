@@ -18,11 +18,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/Password"
         app:layout_constraintVertical_bias="0.785" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/Password"
         android:layout_width="277dp"
         android:layout_height="41dp"
         android:layout_margin="10dp"
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/Connexion"
         app:layout_constraintVertical_bias="0.19" />
 
     <TextView
@@ -61,7 +61,7 @@
         android:layout_height="26dp"
         android:text="Connectez vous"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/Username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,13 +69,13 @@
         app:layout_constraintVertical_bias="0.675" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/Username"
         android:layout_width="275dp"
         android:layout_height="41dp"
         android:drawableLeft="@drawable/ic_baseline_account_circle_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Jojo@Bizarre.adventure"
+        android:hint="Username"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColorHint="@color/white"
@@ -88,7 +88,7 @@
         app:layout_constraintVertical_bias="0.256" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/Connexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Connexion"
@@ -96,7 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/Password"
         app:layout_constraintVertical_bias="0.093" />
 
     <LinearLayout
