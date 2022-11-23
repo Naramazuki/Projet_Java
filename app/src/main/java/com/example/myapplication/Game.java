@@ -30,6 +30,8 @@ public class Game extends AppCompatActivity {
         ConstraintLayout layout=findViewById(R.id.Background);
         TableLayout interfaceCombat= findViewById(R.id.IntfCombat);
         ProgressBar bar =findViewById(R.id.progressBar3);
+        TableLayout interfacePersonnage=findViewById(R.id.personnage);
+        TextView Nom=findViewById(R.id.Nom);
         Entrer.setOnClickListener(view -> {
             layout.setBackgroundResource(R.drawable.battle_background);
             Entrer.setVisibility(View.INVISIBLE);
@@ -40,6 +42,8 @@ public class Game extends AppCompatActivity {
             }
             Toast.makeText(getApplicationContext(),"Bienvenue "+ Pseudo.getText().toString(),Toast.LENGTH_SHORT).show();
             bar.setVisibility(View.INVISIBLE);
+            Nom.setText(Pseudo.getText().toString());
+            interfacePersonnage.setVisibility(View.VISIBLE);
 
         });
 

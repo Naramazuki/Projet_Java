@@ -19,6 +19,8 @@
         android:hint="@string/pseudonyme"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:maxLength="9"
+
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,5 +110,88 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/personnage"
+        android:layout_width="730dp"
+        android:layout_height="270dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/Pseudo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/one_punch" />
+
+            <ProgressBar
+                android:id="@+id/Pv"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="215dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="#4CAF50"
+                android:progress="100" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/Nom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <ProgressBar
+                android:id="@+id/Mana"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:backgroundTintMode="src_atop"
+                android:foregroundTint="#3F51B5"
+                android:progress="100"
+                android:progressBackgroundTint="#3F51B5" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/Lv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn"
+                android:text="LV 1"
+                android:gravity="center"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:progressDrawable="@drawable/circle" />
+        </TableRow>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
