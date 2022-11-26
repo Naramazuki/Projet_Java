@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import java.util.ArrayList;
 
 public class Game extends AppCompatActivity {
     public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom){
@@ -39,6 +42,7 @@ public class Game extends AppCompatActivity {
         TextView mana = findViewById(R.id.Mana);
         TextView Pv = findViewById(R.id.Pv);
         Button Next=findViewById(R.id.NextChara);
+        Button Sorts=findViewById(R.id.SORTS);
         ConstraintLayout layout=findViewById(R.id.Background);
         TableLayout interfaceCombat= findViewById(R.id.IntfCombat);
         ProgressBar bar =findViewById(R.id.progressBar3);
@@ -46,6 +50,11 @@ public class Game extends AppCompatActivity {
         TextView Nom=findViewById(R.id.Nom);
         ListCharacters listp= new ListCharacters();
         listp.addTeam(new Characters("deji"));
+        ArrayList<Spell> lists= new ArrayList<>();
+        lists.add(new Spell(true,"explosion",15));
+        lists.add(new Spell(false,"YOLO",35));
+        GridView ListSorts=findViewById(R.id.List_sort);
+        ListSorts.setAdapter(new MyAdapter(this,lists));
 
         ImageView imagePerso=findViewById(R.id.ImagePerso);
         Pseudo.addTextChangedListener(new TextWatcher() {
@@ -104,6 +113,14 @@ public class Game extends AppCompatActivity {
 
             }
         });
+        Sorts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ListSorts.setVisibility(View.VISIBLE);
+                interfaceCombat.setVisibility(View.INVISIBLE);
+            }
+        });
+
 
     }
 }

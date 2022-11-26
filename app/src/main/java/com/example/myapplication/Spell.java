@@ -17,7 +17,7 @@ public class Spell {
     }
 
     public boolean isPhysical() {
-        return physical;
+        return this.physical;
     }
 
     public void setPhysical(boolean physical) {
@@ -25,7 +25,7 @@ public class Spell {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -33,7 +33,7 @@ public class Spell {
     }
 
     public int getPower() {
-        return power;
+        return this.power;
     }
 
     public void setPower(int power) {
