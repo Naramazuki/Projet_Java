@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/entrer"
-
+        android:background="@drawable/button_bg_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -139,18 +139,26 @@
                 android:layout_width="215dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:progressTint="#4CAF50"
-                android:progress="100"/>
-                <TextView
-                    android:gravity="center"
-                    android:text="567/565PV"
-                    android:layout_marginLeft="5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:background="@drawable/btn"
-                    android:id="@+id/Pv"
-                    />
+                android:progress="100"
+                android:progressTint="#4CAF50" />
+
+            <TextView
+                android:id="@+id/Pv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn"
+                android:gravity="center"
+                android:text="567/565PV" />
+
+            <Button
+                android:id="@+id/NextChara"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn"
+                android:gravity="center"
+                android:text="Next" />
 
         </TableRow>
 
@@ -176,18 +184,17 @@
                 android:backgroundTintMode="src_atop"
                 android:foregroundTint="#3F51B5"
                 android:progress="100"
-                android:progressTint="#3F51B5"
-                 />
-            <TextView
-                android:gravity="center"
-                android:text="200/200PM"
-                android:layout_marginLeft="5dp"
+                android:progressTint="#3F51B5" />
 
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:background="@drawable/btn"
+            <TextView
                 android:id="@+id/Mana"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/btn"
+                android:gravity="center"
+                android:text="200/200PM" />
         </TableRow>
 
         <TableRow

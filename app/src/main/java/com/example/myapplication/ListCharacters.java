@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 import java.util.ArrayList;
 
-import javax.xml.stream.events.Characters;
+
 
 public class ListCharacters {
     ArrayList<Characters> list_c;

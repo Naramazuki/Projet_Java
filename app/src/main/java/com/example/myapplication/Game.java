@@ -29,12 +29,18 @@ public class Game extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Button Entrer = findViewById(R.id.Entrer);
         TextView Pseudo = findViewById(R.id.Pseudo);
+        TextView mana = findViewById(R.id.Mana);
+        TextView Pv = findViewById(R.id.Pv);
+
         ConstraintLayout layout=findViewById(R.id.Background);
         TableLayout interfaceCombat= findViewById(R.id.IntfCombat);
         ProgressBar bar =findViewById(R.id.progressBar3);
         TableLayout interfacePersonnage=findViewById(R.id.personnage);
         TextView Nom=findViewById(R.id.Nom);
-        
+        ListCharacters listp= new ListCharacters();
+        listp.addTeam(new Characters(Pseudo.getText().toString()));
+        listp.addTeam(new Characters("deji"));
+
         ImageView imagePerso=findViewById(R.id.ImagePerso);
 
 
@@ -43,6 +49,9 @@ public class Game extends AppCompatActivity {
             Entrer.setVisibility(View.INVISIBLE);
             Pseudo.setVisibility(View.INVISIBLE);
             interfaceCombat.setVisibility(View.VISIBLE);
+            mana.setText(listp.getTeam().get(0).mana_act+"/"+listp.getTeam().get(0).mana+"PM");
+            Pv.setText(listp.getTeam().get(0).hp_act+"/"+listp.getTeam().get(0).hp+"PV");
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 bar.setProgress(100,true);
             }

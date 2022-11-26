@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 public class Characters {
     int hp;
+    int hp_act;
     int mana;
+    int mana_act;
     String name;
     int id;
     int speed;
@@ -21,7 +23,22 @@ public class Characters {
     //int exp;
     //String class;
 
-    public Characters() {
+    public Characters(String name) {
+        this.ally=true;
+        this.name=name;
+        this.hp=50;
+        this.mana=50;
+        this.id=id;
+        this.mana_act=mana;
+        this.hp_act=this.hp;
+        this.speed=10;
+        this.atk_m=10;
+        this.atk_p=10;
+        this.def_m=10;
+        this.def_p=10;
+        this.m_spell=new ArrayList<Spell>();
+        this.p_spell=new ArrayList<Spell>();
+
     }
 
     public Characters(boolean ally,int hp, int mana,String name,int id,int speed,int def_m,int def_p,int atk_m,int atk_p) {
@@ -29,6 +46,9 @@ public class Characters {
         this.mana=mana;
         this.name=name;
         this.id=id;
+        this.hp_act=this.hp;
+        this.mana_act=mana;
+
         this.speed=speed;
         this.atk_m=atk_m;
         this.atk_p=atk_p;
