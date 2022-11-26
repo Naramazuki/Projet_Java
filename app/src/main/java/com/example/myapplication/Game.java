@@ -1,12 +1,14 @@
 package com.example.myapplication;
 
 import android.content.pm.ActivityInfo;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -32,6 +34,10 @@ public class Game extends AppCompatActivity {
         ProgressBar bar =findViewById(R.id.progressBar3);
         TableLayout interfacePersonnage=findViewById(R.id.personnage);
         TextView Nom=findViewById(R.id.Nom);
+        
+        ImageView imagePerso=findViewById(R.id.ImagePerso);
+
+
         Entrer.setOnClickListener(view -> {
             layout.setBackgroundResource(R.drawable.battle_background);
             Entrer.setVisibility(View.INVISIBLE);
@@ -44,6 +50,7 @@ public class Game extends AppCompatActivity {
             bar.setVisibility(View.INVISIBLE);
             Nom.setText(Pseudo.getText().toString());
             interfacePersonnage.setVisibility(View.VISIBLE);
+            imagePerso.setVisibility(View.VISIBLE);
 
         });
 

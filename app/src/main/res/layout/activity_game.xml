@@ -113,8 +113,8 @@
 
     <TableLayout
         android:id="@+id/personnage"
-        android:layout_width="730dp"
-        android:layout_height="270dp"
+        android:layout_width="734dp"
+        android:layout_height="162dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/Pseudo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,13 +134,24 @@
                 android:background="@drawable/one_punch" />
 
             <ProgressBar
-                android:id="@+id/Pv"
+                android:id="@+id/PvBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="215dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:backgroundTint="#4CAF50"
-                android:progress="100" />
+                android:progressTint="#4CAF50"
+                android:progress="100"/>
+                <TextView
+                    android:gravity="center"
+                    android:text="567/565PV"
+                    android:layout_marginLeft="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/btn"
+                    android:id="@+id/Pv"
+                    />
+
         </TableRow>
 
         <TableRow
@@ -156,15 +167,27 @@
                 android:text="TextView" />
 
             <ProgressBar
-                android:id="@+id/Mana"
+                android:id="@+id/ManaBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+
                 android:layout_marginLeft="10dp"
                 android:backgroundTintMode="src_atop"
                 android:foregroundTint="#3F51B5"
                 android:progress="100"
-                android:progressBackgroundTint="#3F51B5" />
+                android:progressTint="#3F51B5"
+                 />
+            <TextView
+                android:gravity="center"
+                android:text="200/200PM"
+                android:layout_marginLeft="5dp"
+
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:background="@drawable/btn"
+                android:id="@+id/Mana"
+                />
         </TableRow>
 
         <TableRow
@@ -177,8 +200,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn"
-                android:text="LV 1"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="LV 1" />
         </TableRow>
 
         <TableRow
@@ -194,4 +217,20 @@
         </TableRow>
     </TableLayout>
 
+
+    <ImageView
+        android:id="@+id/ImagePerso"
+        android:layout_width="139dp"
+        android:layout_height="152dp"
+        android:background="@drawable/personnage"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Pseudo"
+        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
