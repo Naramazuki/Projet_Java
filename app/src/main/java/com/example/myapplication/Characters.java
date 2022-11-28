@@ -24,6 +24,20 @@ public class Characters {
     //String class;
 
     public Characters() {
+        this.ally=true;
+        this.name=name;
+        this.hp=50;
+        this.mana=50;
+        this.id=id;
+        this.mana_act=mana;
+        this.hp_act=this.hp;
+        this.speed=10;
+        this.atk_m=10;
+        this.atk_p=10;
+        this.def_m=10;
+        this.def_p=10;
+        this.m_spell=new ArrayList<Spell>();
+        this.p_spell=new ArrayList<Spell>();
     }
 
     public Characters(boolean ally,int hp, int mana,String name,int id,int speed,int def_m,int def_p,int atk_m,int atk_p) {
@@ -37,6 +51,8 @@ public class Characters {
         this.def_m=def_m;
         this.def_p=def_p;
         this.ally=ally;
+        this.hp_act=this.hp;
+        this.mana_act=mana;
         this.m_spell=new ArrayList<Spell>();
         this.p_spell=new ArrayList<Spell>();
     }
@@ -122,5 +138,7 @@ public class Characters {
         this.mana = mana;
     }
 
-    public void levelup()
+    public void levelup(){
+        
+    }
 }
