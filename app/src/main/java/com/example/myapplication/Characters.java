@@ -23,7 +23,7 @@ public class Characters {
     //int exp;
     //String class;
 
-    public Characters() {
+    public Characters(String name) {
         this.ally=true;
         this.name=name;
         this.hp=50;
@@ -139,6 +139,6 @@ public class Characters {
     }
 
     public void levelup(){
-        
+
     }
 }
