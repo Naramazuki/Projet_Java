@@ -43,6 +43,7 @@ public class Game extends AppCompatActivity {
         TextView Pv = findViewById(R.id.Pv);
         Button Next=findViewById(R.id.NextChara);
         Button Sorts=findViewById(R.id.SORTS);
+        Button retour=findViewById(R.id.retour);
         ConstraintLayout layout=findViewById(R.id.Background);
         TableLayout interfaceCombat= findViewById(R.id.IntfCombat);
         ProgressBar bar =findViewById(R.id.progressBar3);
@@ -53,6 +54,10 @@ public class Game extends AppCompatActivity {
         ArrayList<Spell> lists= new ArrayList<>();
         lists.add(new Spell(true,"explosion",15));
         lists.add(new Spell(false,"YOLO",35));
+        lists.add(new Spell(true,"GIGAiMPACT",15));
+        lists.add(new Spell(true,"SOLEIL",15));
+        lists.add(new Spell(true,"LUNE",15));
+
         GridView ListSorts=findViewById(R.id.List_sort);
         ListSorts.setAdapter(new MyAdapter(this,lists));
 
@@ -118,6 +123,16 @@ public class Game extends AppCompatActivity {
             public void onClick(View view) {
                 ListSorts.setVisibility(View.VISIBLE);
                 interfaceCombat.setVisibility(View.INVISIBLE);
+                retour.setVisibility(View.VISIBLE);
+            }
+        });
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ListSorts.setVisibility(View.INVISIBLE);
+                interfaceCombat.setVisibility(View.VISIBLE);
+                retour.setVisibility(View.INVISIBLE);
+
             }
         });
 
