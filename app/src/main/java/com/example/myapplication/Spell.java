@@ -1,15 +1,14 @@
 package com.example.myapplication;
 
-import java.lang.reflect.Array;
 
 public class Spell {
     boolean physical;
-    String name;
-    int power;
-    int rank;
-    String description;
+    String name="";
+    int power=0;
+    int rank=0;
+    String description="";
     int id;
-    int cost;
+    int cost=0;
     boolean aoe;
 
     public Spell() {
@@ -40,7 +39,7 @@ public class Spell {
     }
 
     public boolean isPhysical() {
-        return physical;
+        return this.physical;
     }
 
     public void setPhysical(boolean physical) {
@@ -48,7 +47,7 @@ public class Spell {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -56,7 +55,7 @@ public class Spell {
     }
 
     public int getPower() {
-        return power;
+        return this.power;
     }
 
     public void setPower(int power) {

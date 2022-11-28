@@ -20,6 +20,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 
+
 public class Game extends AppCompatActivity {
     public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom){
 
@@ -34,9 +35,11 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         final int[] i = {0};
         setContentView(R.layout.activity_game);
+        //Mise au format paysage
         View overlay=findViewById(R.id.Background);
         overlay.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY|View.SYSTEM_UI_FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //Déclaration des balises utilisées dans nos fonctions
         Button Entrer = findViewById(R.id.Entrer);
         EditText Pseudo = findViewById(R.id.Pseudo);
         TextView mana = findViewById(R.id.Mana);
@@ -49,19 +52,19 @@ public class Game extends AppCompatActivity {
         ProgressBar bar =findViewById(R.id.progressBar3);
         TableLayout interfacePersonnage=findViewById(R.id.personnage);
         TextView Nom=findViewById(R.id.Nom);
+        GridView ListSorts=findViewById(R.id.List_sort);
+        ImageView imagePerso=findViewById(R.id.ImagePerso);
+
+        //creation du premier personnage et ajout des liste equipe et sort pour tests
         ListCharacters listp= new ListCharacters();
         listp.addTeam(new Characters("deji"));
-        ArrayList<Spell> lists= new ArrayList<>();
-        lists.add(new Spell(true,"explosion",15));
-        lists.add(new Spell(false,"YOLO",35));
-        lists.add(new Spell(true,"GIGAiMPACT",15));
-        lists.add(new Spell(true,"SOLEIL",15));
-        lists.add(new Spell(true,"LUNE",15));
+        ListSpell lists= new ListSpell();
 
-        GridView ListSorts=findViewById(R.id.List_sort);
-        ListSorts.setAdapter(new MyAdapter(this,lists));
 
-        ImageView imagePerso=findViewById(R.id.ImagePerso);
+        ListSorts.setAdapter(new MyAdapter(this,lists.list_s));
+
+
+
         Pseudo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -100,40 +103,31 @@ public class Game extends AppCompatActivity {
             imagePerso.setVisibility(View.VISIBLE);
 
         });
-        Next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(i[0]<listp.getTeam().size()){
-                    get_character(i[0],mana,Pv,listp,Nom);
-                    i[0]++;
-
-                }
-
-                else {
-                    i[0]=0;
-                    get_character(i[0],mana,Pv,listp,Nom);
-                }
-
-
+        Next.setOnClickListener(view -> {
+            if(i[0]<listp.getTeam().size()){
+                get_character(i[0],mana,Pv,listp,Nom);
+                i[0]++;
 
             }
+
+            else {
+                i[0]=0;
+                get_character(i[0],mana,Pv,listp,Nom);
+            }
+
+
+
         });
-        Sorts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ListSorts.setVisibility(View.VISIBLE);
-                interfaceCombat.setVisibility(View.INVISIBLE);
-                retour.setVisibility(View.VISIBLE);
-            }
+        Sorts.setOnClickListener(view -> {
+            ListSorts.setVisibility(View.VISIBLE);
+            interfaceCombat.setVisibility(View.INVISIBLE);
+            retour.setVisibility(View.VISIBLE);
         });
-        retour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ListSorts.setVisibility(View.INVISIBLE);
-                interfaceCombat.setVisibility(View.VISIBLE);
-                retour.setVisibility(View.INVISIBLE);
+        retour.setOnClickListener(view -> {
+            ListSorts.setVisibility(View.INVISIBLE);
+            interfaceCombat.setVisibility(View.VISIBLE);
+            retour.setVisibility(View.INVISIBLE);
 
-            }
         });
 
 

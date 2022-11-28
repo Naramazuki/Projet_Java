@@ -10,13 +10,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
-    private Context ct;
-    private ArrayList<Spell> ListSorts;
-    private LayoutInflater inflater;
+    private final ArrayList<Spell> ListSorts;
+    private final LayoutInflater inflater;
     public MyAdapter(Context ct, ArrayList<Spell> liste){
-        this.ct=ct;
         this.ListSorts=liste;
-        this.inflater=LayoutInflater.from(this.ct);
+        this.inflater=LayoutInflater.from(ct);
 
     }
     @Override
@@ -37,11 +35,31 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view=inflater.inflate(R.layout.adapter_item,null);
-        Spell n;
         Spell CurrentItem= (Spell) getItem(i);
-        String NomSort=CurrentItem.getName();
+        TextView Powerp=view.findViewById(R.id.deg_p);
+        TextView Powerm=view.findViewById(R.id.deg_m);
         TextView NameSpell=view.findViewById(R.id.NomDuSort);
+        TextView Description=view.findViewById(R.id.descriptionSort);
+        TextView Cout=view.findViewById(R.id.cout_pm);
+
+
+        int pow=CurrentItem.power;
+        String NomSort=CurrentItem.getName();
         NameSpell.setText(NomSort);
+        String descrip=CurrentItem.description;
+        Description.setText(descrip);
+        int couts=CurrentItem.cost;
+
+        Cout.setText(couts+" PM");
+        if(CurrentItem.isPhysical()){
+            Powerp.setText("degp: "+pow);
+            Powerm.setText("degm: 0");
+        }
+        else{
+            Powerm.setText("degp: "+pow);
+            Powerp.setText("degp: 0");
+        }
+
         return view;
     }
 }
