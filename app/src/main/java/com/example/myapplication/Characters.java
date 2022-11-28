@@ -8,6 +8,8 @@ public class Characters {
     int hp;
     int mana;
     String name;
+    int mana_act;
+    int hp_act;
     int id;
     int speed;
     int atk_p;
