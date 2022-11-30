@@ -24,10 +24,13 @@ import java.util.ArrayList;
 public class Game extends AppCompatActivity {
     public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom){
 
+
+
         mana.setText(listp.getTeam().get(id).mana_act+"/"+listp.getTeam().get(id).mana+"PM");
         Pv.setText(listp.getTeam().get(id).hp_act+"/"+listp.getTeam().get(id).hp+"PV");
         Nom.setText(listp.getTeam().get(id).name);
     }
+    //faire fonction d'affichage des ennemies et des alliés
 
 
     @Override
@@ -59,9 +62,20 @@ public class Game extends AppCompatActivity {
         ListCharacters listp= new ListCharacters();
         listp.addTeam(new Characters("deji"));
         ListSpell lists= new ListSpell();
+        int maxspeed=listp.getTeam().get(0).speed;
+        int id=0;
+        for(int w=1;w<listp.getTeam().size();w++) {
+            if(listp.getTeam().get(w).speed>maxspeed){
+                maxspeed=listp.getTeam().get(w).speed;
+                id=w;
+
+            }
+
+        }
 
 
-        ListSorts.setAdapter(new MyAdapter(this,lists.list_s));
+
+            ListSorts.setAdapter(new MyAdapter(this,lists.list_s));
 
 
 
@@ -83,6 +97,7 @@ public class Game extends AppCompatActivity {
         });
 
 
+        int finalId = id;
         Entrer.setOnClickListener(view -> {
             listp.addTeam(new Characters(Pseudo.getText().toString()));
 
@@ -90,7 +105,7 @@ public class Game extends AppCompatActivity {
             Entrer.setVisibility(View.INVISIBLE);
             Pseudo.setVisibility(View.INVISIBLE);
             interfaceCombat.setVisibility(View.VISIBLE);
-            get_character(0,mana,Pv,listp,Nom);
+            get_character(finalId,mana,Pv,listp,Nom);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 bar.setProgress(100,true);
@@ -103,6 +118,8 @@ public class Game extends AppCompatActivity {
             imagePerso.setVisibility(View.VISIBLE);
 
         });
+
+        //retirer fonction next et le bouton qui va avec
         Next.setOnClickListener(view -> {
             if(i[0]<listp.getTeam().size()){
                 get_character(i[0],mana,Pv,listp,Nom);
