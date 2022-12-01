@@ -30,7 +30,21 @@ public class Game extends AppCompatActivity {
         Pv.setText(listp.getTeam().get(id).hp_act+"/"+listp.getTeam().get(id).hp+"PV");
         Nom.setText(listp.getTeam().get(id).name);
     }
-    //faire fonction d'affichage des ennemies et des alliés
+    //faire changement de la structure d'affichae des personnages et utiliser gridview qui facilite grandement la tache
+    public void personnage(TextView nom,TextView pv, ProgressBar pvBar,ImageView icon){
+        if(nom.getVisibility()==View.VISIBLE){
+            nom.setVisibility(View.INVISIBLE);
+            pv.setVisibility(View.INVISIBLE);
+            pvBar.setVisibility(View.INVISIBLE);
+            icon.setVisibility(View.INVISIBLE);
+        }
+        else{
+            nom.setVisibility(View.VISIBLE);
+            pv.setVisibility(View.VISIBLE);
+            pvBar.setVisibility(View.VISIBLE);
+            icon.setVisibility(View.VISIBLE);
+        }
+    }
 
 
     @Override
@@ -57,8 +71,13 @@ public class Game extends AppCompatActivity {
         TextView Nom=findViewById(R.id.Nom);
         GridView ListSorts=findViewById(R.id.List_sort);
         ImageView imagePerso=findViewById(R.id.ImagePerso);
+        TextView nomEnnemy = findViewById(R.id.Nom_Ennemie);
+        TextView pvEnnemy = findViewById(R.id.Pv_Ennemy);
+        ProgressBar Pv_Ennemy = findViewById(R.id.PvBar_Ennemy);
+        ImageView iconEnnemy = findViewById(R.id.Icon_Ennemy);
 
-        //creation du premier personnage et ajout des liste equipe et sort pour tests
+
+        //creation du premier personnage et ajout des listes equipe et sort pour tests
         ListCharacters listp= new ListCharacters();
         listp.addTeam(new Characters("deji"));
         ListSpell lists= new ListSpell();
