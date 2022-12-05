@@ -79,37 +79,37 @@ public class ListCharacters {
         l.list_c.get(9).addSpell(ls.list_s.get(26));
         l.list_c.get(9).addSpell(ls.list_s.get(23));
 
-        l.addList(false,10000,400,"Nergigante",10,50,100,100,40,40);
+        l.addList(false,10000,400,"Nergigante",10,50,100,100,40,40,2);
         l.list_c.get(10).addSpell(ls.list_s.get(3));
         l.list_c.get(10).addSpell(ls.list_s.get(17));
         l.list_c.get(10).addSpell(ls.list_s.get(16));
 
-        l.addList(false,10000,400,"Magnamalo",11,50,100,100,40,40);
+        l.addList(false,10000,400,"Magnamalo",11,50,100,100,40,40,2);
         l.list_c.get(11).addSpell(ls.list_s.get(16));
         l.list_c.get(11).addSpell(ls.list_s.get(17));
         l.list_c.get(11).addSpell(ls.list_s.get(18));
         
-        l.addList(false,10000,400,"Rakna Khadaki",12,50,100,100,40,40);
+        l.addList(false,10000,400,"Rakna Khadaki",12,50,100,100,40,40,2);
         l.list_c.get(12).addSpell(ls.list_s.get(16));
         l.list_c.get(13).addSpell(ls.list_s.get(17));
         l.list_c.get(13).addSpell(ls.list_s.get(19));
 
-        l.addList(false,10000,400,"Kushala Daora",13,50,100,100,40,40);
+        l.addList(false,10000,400,"Kushala Daora",13,50,100,100,40,40,2);
         l.list_c.get(14).addSpell(ls.list_s.get(16));
         l.list_c.get(14).addSpell(ls.list_s.get(17));
         l.list_c.get(14).addSpell(ls.list_s.get(27));
 
-        l.addList(false,10000,400,"Zorah Magdaros",14,50,100,100,40,40);
+        l.addList(false,10000,400,"Zorah Magdaros",14,50,100,100,40,40,2);
         l.list_c.get(15).addSpell(ls.list_s.get(16));
         l.list_c.get(15).addSpell(ls.list_s.get(17));
         l.list_c.get(15).addSpell(ls.list_s.get(3));
 
-        l.addList(false,115,30,"Mog",15,30,25,50,25,15);
+        l.addList(false,115,30,"Mog",15,30,25,50,25,15,1);
         l.list_c.get(16).addSpell(ls.list_s.get(1));
         l.list_c.get(16).addSpell(ls.list_s.get(20));
         l.list_c.get(16).addSpell(ls.list_s.get(2));
 
-        l.addList(false,150,25,"Gobelins",16,55,15,15,5,80);
+        l.addList(false,150,25,"Gobelins",16,55,15,15,5,80,1);
         l.list_c.get(17).addSpell(ls.list_s.get(20));
         l.list_c.get(17).addSpell(ls.list_s.get(28));
         l.list_c.get(17).addSpell(ls.list_s.get(1));
