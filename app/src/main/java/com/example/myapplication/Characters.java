@@ -8,8 +8,6 @@ public class Characters {
     int hp;
     int mana;
     String name;
-    int mana_act;
-    int hp_act;
     int id;
     int speed;
     int atk_p;
@@ -20,24 +18,10 @@ public class Characters {
     ArrayList<Spell> p_spell;
     ArrayList<Spell> m_spell;
     int level;
-    //int exp;
-    //String class;
+    int exp_needed;
+    int exp_given;
 
-    public Characters(String name) {
-        this.ally=true;
-        this.name=name;
-        this.hp=50;
-        this.mana=50;
-        this.id=id;
-        this.mana_act=mana;
-        this.hp_act=this.hp;
-        this.speed=10;
-        this.atk_m=10;
-        this.atk_p=10;
-        this.def_m=10;
-        this.def_p=10;
-        this.m_spell=new ArrayList<Spell>();
-        this.p_spell=new ArrayList<Spell>();
+    public Characters() {
     }
 
     public Characters(boolean ally,int hp, int mana,String name,int id,int speed,int def_m,int def_p,int atk_m,int atk_p) {
@@ -51,10 +35,42 @@ public class Characters {
         this.def_m=def_m;
         this.def_p=def_p;
         this.ally=ally;
-        this.hp_act=this.hp;
-        this.mana_act=mana;
         this.m_spell=new ArrayList<Spell>();
         this.p_spell=new ArrayList<Spell>();
+        this.level=1;
+        this.exp_needed=1;
+        this.exp_given=1;
+    }
+
+    public Characters(boolean ally,int hp, int mana,String name,int id,int speed,int def_m,int def_p,int atk_m,int atk_p,int exp_given) {
+        this.hp=hp;
+        this.mana=mana;
+        this.name=name;
+        this.id=id;
+        this.speed=speed;
+        this.atk_m=atk_m;
+        this.atk_p=atk_p;
+        this.def_m=def_m;
+        this.def_p=def_p;
+        this.ally=ally;
+        this.m_spell=new ArrayList<Spell>();
+        this.p_spell=new ArrayList<Spell>();
+        this.level=1;
+        this.exp_needed=1;
+        this.exp_given=exp_given;
+    }
+
+    public void lvlup(Characters c){
+        c.hp=c.hp*2;
+        c.mana=c.mana*2;
+        c.speed=c.speed++;
+        c.atk_m=c.atk_m*1.5;
+        c.atk_p=c.atk_p*1.5;
+        c.def_m=c.def_m*1.5;
+        c.def_p=c.def_p*1.5;
+        c.level++;
+        c.exp_needed=c.level;
+
     }
 
     public void addSpell(Spell s){
@@ -138,7 +154,5 @@ public class Characters {
         this.mana = mana;
     }
 
-    public void levelup(){
-
-    }
+    public void levelup()
 }
