@@ -153,6 +153,4 @@ public class Characters {
     public void setMana(int mana) {
         this.mana = mana;
     }
-
-    public void levelup()
 }
