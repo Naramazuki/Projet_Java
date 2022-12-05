@@ -113,6 +113,74 @@ public class ListCharacters {
         l.list_c.get(17).addSpell(ls.list_s.get(20));
         l.list_c.get(17).addSpell(ls.list_s.get(28));
         l.list_c.get(17).addSpell(ls.list_s.get(1));
+
+        l.addList(true,9999,9999,"Hero test",1,1,1,1,1,1);
+        l.list_c.get(18).addSpell(ls.list_s.get(0));
+        l.list_c.get(18).addSpell(ls.list_s.get(1));
+        l.list_c.get(18).addSpell(ls.list_s.get(2));
+        l.list_c.get(18).addSpell(ls.list_s.get(3));
+        l.list_c.get(18).addSpell(ls.list_s.get(4));
+        l.list_c.get(18).addSpell(ls.list_s.get(5));
+        l.list_c.get(18).addSpell(ls.list_s.get(6));
+        l.list_c.get(18).addSpell(ls.list_s.get(7));
+        l.list_c.get(18).addSpell(ls.list_s.get(8));
+        l.list_c.get(18).addSpell(ls.list_s.get(9));
+        l.list_c.get(18).addSpell(ls.list_s.get(10));
+        l.list_c.get(18).addSpell(ls.list_s.get(11));
+        l.list_c.get(18).addSpell(ls.list_s.get(12));
+        l.list_c.get(18).addSpell(ls.list_s.get(13));
+        l.list_c.get(18).addSpell(ls.list_s.get(14));
+        l.list_c.get(18).addSpell(ls.list_s.get(15));
+        l.list_c.get(18).addSpell(ls.list_s.get(16));
+        l.list_c.get(18).addSpell(ls.list_s.get(17));
+        l.list_c.get(18).addSpell(ls.list_s.get(18));
+        l.list_c.get(18).addSpell(ls.list_s.get(19));
+        l.list_c.get(18).addSpell(ls.list_s.get(20));
+        l.list_c.get(18).addSpell(ls.list_s.get(21));
+        l.list_c.get(18).addSpell(ls.list_s.get(22));
+        l.list_c.get(18).addSpell(ls.list_s.get(23));
+        l.list_c.get(18).addSpell(ls.list_s.get(24));
+        l.list_c.get(18).addSpell(ls.list_s.get(25));
+        l.list_c.get(18).addSpell(ls.list_s.get(26));
+        l.list_c.get(18).addSpell(ls.list_s.get(27));
+        l.list_c.get(18).addSpell(ls.list_s.get(28));
+        l.list_c.get(18).addSpell(ls.list_s.get(29));
+        l.list_c.get(18).addSpell(ls.list_s.get(30));
+
+        l.addList(false,9999,9999,"Boss test",1,1,1,1,1,1);
+        l.list_c.get(18).addSpell(ls.list_s.get(0));
+        l.list_c.get(18).addSpell(ls.list_s.get(1));
+        l.list_c.get(18).addSpell(ls.list_s.get(2));
+        l.list_c.get(18).addSpell(ls.list_s.get(3));
+        l.list_c.get(18).addSpell(ls.list_s.get(4));
+        l.list_c.get(18).addSpell(ls.list_s.get(5));
+        l.list_c.get(18).addSpell(ls.list_s.get(6));
+        l.list_c.get(18).addSpell(ls.list_s.get(7));
+        l.list_c.get(18).addSpell(ls.list_s.get(8));
+        l.list_c.get(18).addSpell(ls.list_s.get(9));
+        l.list_c.get(18).addSpell(ls.list_s.get(10));
+        l.list_c.get(18).addSpell(ls.list_s.get(11));
+        l.list_c.get(18).addSpell(ls.list_s.get(12));
+        l.list_c.get(18).addSpell(ls.list_s.get(13));
+        l.list_c.get(18).addSpell(ls.list_s.get(14));
+        l.list_c.get(18).addSpell(ls.list_s.get(15));
+        l.list_c.get(18).addSpell(ls.list_s.get(16));
+        l.list_c.get(18).addSpell(ls.list_s.get(17));
+        l.list_c.get(18).addSpell(ls.list_s.get(18));
+        l.list_c.get(18).addSpell(ls.list_s.get(19));
+        l.list_c.get(18).addSpell(ls.list_s.get(20));
+        l.list_c.get(18).addSpell(ls.list_s.get(21));
+        l.list_c.get(18).addSpell(ls.list_s.get(22));
+        l.list_c.get(18).addSpell(ls.list_s.get(23));
+        l.list_c.get(18).addSpell(ls.list_s.get(24));
+        l.list_c.get(18).addSpell(ls.list_s.get(25));
+        l.list_c.get(18).addSpell(ls.list_s.get(26));
+        l.list_c.get(18).addSpell(ls.list_s.get(27));
+        l.list_c.get(18).addSpell(ls.list_s.get(28));
+        l.list_c.get(18).addSpell(ls.list_s.get(29));
+        l.list_c.get(18).addSpell(ls.list_s.get(30));
+
+
     }
 
     public Characters duplicate(int index){
