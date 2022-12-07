@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 
 public class Spell {
-    boolean physical;
+    boolean magical;
     String name="";
     int power=0;
     int rank=0;
@@ -15,7 +15,7 @@ public class Spell {
     }
 
     public Spell(boolean p,String name,int power,int rank,String description,int id,int cost){
-        this.physical=p;
+        this.magical=p;
         this.name=name;
         this.power=power;
         this.rank=rank;
@@ -27,7 +27,7 @@ public class Spell {
     }
 
     public Spell(boolean p,String name,int power,int rank,String description,int id,int cost,boolean aoe){
-        this.physical=p;
+        this.magical=p;
         this.name=name;
         this.power=power;
         this.rank=rank;
@@ -38,12 +38,12 @@ public class Spell {
 
     }
 
-    public boolean isPhysical() {
-        return this.physical;
+    public boolean isMagical() {
+        return this.magical;
     }
 
-    public void setPhysical(boolean physical) {
-        this.physical = physical;
+    public void setPhysical(boolean magical) {
+        this.magical = magical;
     }
 
     public String getName() {

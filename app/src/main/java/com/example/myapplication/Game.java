@@ -29,6 +29,7 @@ public class Game extends AppCompatActivity {
         mana.setText(listp.getTeam().get(id).mana_act+"/"+listp.getTeam().get(id).mana+"PM");
         Pv.setText(listp.getTeam().get(id).hp_act+"/"+listp.getTeam().get(id).hp+"PV");
         Nom.setText(listp.getTeam().get(id).name);
+
     }
     //faire changement de la structure d'affichae des personnages et utiliser gridview qui facilite grandement la tache
     public void personnage(TextView nom,TextView pv, ProgressBar pvBar,ImageView icon){
@@ -69,6 +70,7 @@ public class Game extends AppCompatActivity {
         ProgressBar bar =findViewById(R.id.progressBar3);
         TableLayout interfacePersonnage=findViewById(R.id.personnage);
         TextView Nom=findViewById(R.id.Nom);
+        Button Attaquer=findViewById(R.id.ATTAQUER);
         GridView ListSorts=findViewById(R.id.List_sort);
         ImageView imagePerso=findViewById(R.id.ImagePerso);
         TextView nomEnnemy = findViewById(R.id.Nom_Ennemie);
@@ -79,8 +81,13 @@ public class Game extends AppCompatActivity {
 
         //creation du premier personnage et ajout des listes equipe et sort pour tests
         ListCharacters listp= new ListCharacters();
-        listp.addTeam(new Characters("deji"));
         ListSpell lists= new ListSpell();
+
+        listp.collection();
+        listp.addTeam(listp.duplicate(2));
+        listp.addTeam(listp.duplicate(5));
+        listp.addTeam(listp.duplicate(17));
+
         int maxspeed=listp.getTeam().get(0).speed;
         int id=0;
         for(int w=1;w<listp.getTeam().size();w++) {
@@ -93,8 +100,7 @@ public class Game extends AppCompatActivity {
         }
 
 
-
-            ListSorts.setAdapter(new MyAdapter(this,lists.list_s));
+            ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(0).m_spell));
 
 
 
@@ -118,7 +124,6 @@ public class Game extends AppCompatActivity {
 
         int finalId = id;
         Entrer.setOnClickListener(view -> {
-            listp.addTeam(new Characters(Pseudo.getText().toString()));
 
             layout.setBackgroundResource(R.drawable.battle_background);
             Entrer.setVisibility(View.INVISIBLE);
@@ -155,14 +160,26 @@ public class Game extends AppCompatActivity {
 
         });
         Sorts.setOnClickListener(view -> {
+            ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(i[0]).m_spell));
+            Next.setVisibility(View.INVISIBLE);
             ListSorts.setVisibility(View.VISIBLE);
             interfaceCombat.setVisibility(View.INVISIBLE);
             retour.setVisibility(View.VISIBLE);
+
+        });
+        Attaquer.setOnClickListener(view -> {
+            ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(i[0]).p_spell));
+            Next.setVisibility(View.INVISIBLE);
+            ListSorts.setVisibility(View.VISIBLE);
+            interfaceCombat.setVisibility(View.INVISIBLE);
+            retour.setVisibility(View.VISIBLE);
+
         });
         retour.setOnClickListener(view -> {
             ListSorts.setVisibility(View.INVISIBLE);
             interfaceCombat.setVisibility(View.VISIBLE);
             retour.setVisibility(View.INVISIBLE);
+            Next.setVisibility(View.VISIBLE);
 
         });
 

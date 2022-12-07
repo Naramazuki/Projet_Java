@@ -10,10 +10,12 @@ public class Characters {
     String name;
     int id;
     int speed;
-    int atk_p;
-    int atk_m;
-    int def_m;
-    int def_p;
+    int mana_act;
+    int hp_act;
+    double atk_p;
+    double atk_m;
+    double def_m;
+    double def_p;
     boolean ally;
     ArrayList<Spell> p_spell;
     ArrayList<Spell> m_spell;
@@ -24,7 +26,7 @@ public class Characters {
     public Characters() {
     }
 
-    public Characters(boolean ally,int hp, int mana,String name,int id,int speed,int def_m,int def_p,int atk_m,int atk_p) {
+    public Characters(boolean ally,int hp, int mana,String name,int id,int speed,double def_m,double def_p,double atk_m,double atk_p) {
         this.hp=hp;
         this.mana=mana;
         this.name=name;
@@ -35,6 +37,8 @@ public class Characters {
         this.def_m=def_m;
         this.def_p=def_p;
         this.ally=ally;
+        this.hp_act=this.hp;
+        this.mana_act=this.mana;
         this.m_spell=new ArrayList<Spell>();
         this.p_spell=new ArrayList<Spell>();
         this.level=1;
@@ -42,7 +46,7 @@ public class Characters {
         this.exp_given=1;
     }
 
-    public Characters(boolean ally,int hp, int mana,String name,int id,int speed,int def_m,int def_p,int atk_m,int atk_p,int exp_given) {
+    public Characters(boolean ally,int hp, int mana,String name,int id,int speed,double def_m,double def_p,double atk_m,double atk_p,int exp_given) {
         this.hp=hp;
         this.mana=mana;
         this.name=name;
@@ -53,6 +57,8 @@ public class Characters {
         this.def_m=def_m;
         this.def_p=def_p;
         this.ally=ally;
+        this.hp_act=this.hp;
+        this.mana_act=this.mana;
         this.m_spell=new ArrayList<Spell>();
         this.p_spell=new ArrayList<Spell>();
         this.level=1;
@@ -74,15 +80,15 @@ public class Characters {
     }
 
     public void addSpell(Spell s){
-        if(s.isPhysical()){
-            this.p_spell.add(s);
+        if(s.isMagical()){
+            this.m_spell.add(s);
         }
         else{
-            this.m_spell.add(s);
+            this.p_spell.add(s);
         }
     }
 
-    public int getDef_p() {
+    public double getDef_p() {
         return def_p;
     }
 
@@ -90,7 +96,7 @@ public class Characters {
         this.def_p = def_p;
     }
 
-    public int getDef_m() {
+    public double getDef_m() {
         return def_m;
     }
 
@@ -98,7 +104,7 @@ public class Characters {
         this.def_m = def_m;
     }
 
-    public int getAtk_m() {
+    public double getAtk_m() {
         return atk_m;
     }
 
@@ -106,7 +112,7 @@ public class Characters {
         this.atk_m = atk_m;
     }
 
-    public int getAtk_p() {
+    public double getAtk_p() {
         return atk_p;
     }
 

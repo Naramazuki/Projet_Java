@@ -39,7 +39,6 @@ public class MyAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view=inflater.inflate(R.layout.adapter_item,null);
         Spell CurrentItem= (Spell) getItem(i);
-        TextView Powerp=view.findViewById(R.id.deg_p);
         TextView Powerm=view.findViewById(R.id.deg_m);
         TextView NameSpell=view.findViewById(R.id.NomDuSort);
         TextView Description=view.findViewById(R.id.descriptionSort);
@@ -49,7 +48,7 @@ public class MyAdapter extends BaseAdapter {
         sort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                System.out.println("OK");
             }
         });
         int pow=CurrentItem.power;
@@ -58,16 +57,11 @@ public class MyAdapter extends BaseAdapter {
         String descrip=CurrentItem.description;
         Description.setText(descrip);
         int couts=CurrentItem.cost;
+        Powerm.setText("Degâts: "+pow);
+
 
         Cout.setText(couts+" PM");
-        if(CurrentItem.isPhysical()){
-            Powerp.setText("degp: "+pow);
-            Powerm.setText("degm: 0");
-        }
-        else{
-            Powerm.setText("degp: "+pow);
-            Powerp.setText("degp: 0");
-        }
+
 
         return view;
     }
