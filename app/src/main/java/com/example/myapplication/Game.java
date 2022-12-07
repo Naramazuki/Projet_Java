@@ -22,13 +22,15 @@ import java.util.ArrayList;
 
 
 public class Game extends AppCompatActivity {
-    public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom){
+    public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom,GridView ListSorts){
 
 
 
         mana.setText(listp.getTeam().get(id).mana_act+"/"+listp.getTeam().get(id).mana+"PM");
         Pv.setText(listp.getTeam().get(id).hp_act+"/"+listp.getTeam().get(id).hp+"PV");
         Nom.setText(listp.getTeam().get(id).name);
+        ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(id).m_spell));
+
 
     }
     //faire changement de la structure d'affichae des personnages et utiliser gridview qui facilite grandement la tache
@@ -51,7 +53,6 @@ public class Game extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final int[] i = {0};
         setContentView(R.layout.activity_game);
         //Mise au format paysage
         View overlay=findViewById(R.id.Background);
@@ -88,19 +89,9 @@ public class Game extends AppCompatActivity {
         listp.addTeam(listp.duplicate(5));
         listp.addTeam(listp.duplicate(17));
 
-        int maxspeed=listp.getTeam().get(0).speed;
-        int id=0;
-        for(int w=1;w<listp.getTeam().size();w++) {
-            if(listp.getTeam().get(w).speed>maxspeed){
-                maxspeed=listp.getTeam().get(w).speed;
-                id=w;
-
-            }
-
-        }
 
 
-            ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(0).m_spell));
+
 
 
 
@@ -121,15 +112,27 @@ public class Game extends AppCompatActivity {
             }
         });
 
+        int maxspeed=listp.getTeam().get(0).speed;
+        int id=0;
+        for(int w=1;w<listp.getTeam().size();w++) {
+            if(listp.getTeam().get(w).speed>maxspeed){
+                maxspeed=listp.getTeam().get(w).speed;
+                id=w;
 
-        int finalId = id;
+            }
+
+        }
+
+        final int[] i = {id};
+
         Entrer.setOnClickListener(view -> {
 
             layout.setBackgroundResource(R.drawable.battle_background);
             Entrer.setVisibility(View.INVISIBLE);
             Pseudo.setVisibility(View.INVISIBLE);
             interfaceCombat.setVisibility(View.VISIBLE);
-            get_character(finalId,mana,Pv,listp,Nom);
+            get_character(i[0],mana,Pv,listp,Nom,ListSorts);
+            i[0]++;
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 bar.setProgress(100,true);
@@ -145,22 +148,20 @@ public class Game extends AppCompatActivity {
 
         //retirer fonction next et le bouton qui va avec
         Next.setOnClickListener(view -> {
-            if(i[0]<listp.getTeam().size()){
-                get_character(i[0],mana,Pv,listp,Nom);
-                i[0]++;
+            if (i[0] >= listp.getTeam().size()) {
+                i[0] = 0;
+
 
             }
 
-            else {
-                i[0]=0;
-                get_character(i[0],mana,Pv,listp,Nom);
-            }
+            get_character(i[0],mana,Pv,listp,Nom,ListSorts);
+
+            i[0]++;
 
 
 
         });
         Sorts.setOnClickListener(view -> {
-            ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(i[0]).m_spell));
             Next.setVisibility(View.INVISIBLE);
             ListSorts.setVisibility(View.VISIBLE);
             interfaceCombat.setVisibility(View.INVISIBLE);
@@ -168,7 +169,6 @@ public class Game extends AppCompatActivity {
 
         });
         Attaquer.setOnClickListener(view -> {
-            ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(i[0]).p_spell));
             Next.setVisibility(View.INVISIBLE);
             ListSorts.setVisibility(View.VISIBLE);
             interfaceCombat.setVisibility(View.INVISIBLE);
