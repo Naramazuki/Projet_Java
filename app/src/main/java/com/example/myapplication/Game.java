@@ -1,15 +1,18 @@
 package com.example.myapplication;
 
+
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -18,18 +21,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.myapplication.databinding.ActivityMainBinding;
+
 import java.util.ArrayList;
 
 
 public class Game extends AppCompatActivity {
-    public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom,GridView ListSorts){
+    public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom){
 
 
 
         mana.setText(listp.getTeam().get(id).mana_act+"/"+listp.getTeam().get(id).mana+"PM");
         Pv.setText(listp.getTeam().get(id).hp_act+"/"+listp.getTeam().get(id).hp+"PV");
         Nom.setText(listp.getTeam().get(id).name);
-        ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(id).m_spell));
 
 
     }
@@ -47,6 +51,17 @@ public class Game extends AppCompatActivity {
             pvBar.setVisibility(View.VISIBLE);
             icon.setVisibility(View.VISIBLE);
         }
+    }
+    public ArrayList<Characters> getEnemy(ListCharacters l){
+        ArrayList<Characters> ListEnemy = new ArrayList<>();
+        for (int i = 0; i < l.getTeam().size() ; i++) {
+            if(!l.getTeam().get(i).ally){
+                ListEnemy.add(l.getTeam().get(i));
+                System.out.println(l.getTeam().get(i).name);
+            }
+
+        }
+        return(ListEnemy);
     }
 
 
@@ -78,6 +93,7 @@ public class Game extends AppCompatActivity {
         TextView pvEnnemy = findViewById(R.id.Pv_Ennemy);
         ProgressBar Pv_Ennemy = findViewById(R.id.PvBar_Ennemy);
         ImageView iconEnnemy = findViewById(R.id.Icon_Ennemy);
+        ListView ListeMob=findViewById(R.id.ListeMob);
 
 
         //creation du premier personnage et ajout des listes equipe et sort pour tests
@@ -85,15 +101,21 @@ public class Game extends AppCompatActivity {
         ListSpell lists= new ListSpell();
 
         listp.collection();
-        listp.addTeam(listp.duplicate(2));
-        listp.addTeam(listp.duplicate(5));
-        listp.addTeam(listp.duplicate(17));
+        listp.InitChara();
 
+        //fixer l'adapter
+        ListSorts.setOnItemClickListener((adapterView, view, i, l) -> {
+            ListSorts.setVisibility(View.INVISIBLE);
+            ListeMob.setVisibility(View.VISIBLE);
+            ListeMob.setAdapter(new AdapterMob(getApplicationContext(),getEnemy(listp)));
 
+        });
+        ListeMob.setOnItemClickListener((adapterView, view, i, l) -> {
+            // mettre en place interaction avec les pVs
+            Toast.makeText(getApplicationContext(),"taillade tes veines ",Toast.LENGTH_SHORT).show();
 
-
-
-
+        });
+                // faire une gridwiew listmob
 
         Pseudo.addTextChangedListener(new TextWatcher() {
             @Override
@@ -112,18 +134,9 @@ public class Game extends AppCompatActivity {
             }
         });
 
-        int maxspeed=listp.getTeam().get(0).speed;
-        int id=0;
-        for(int w=1;w<listp.getTeam().size();w++) {
-            if(listp.getTeam().get(w).speed>maxspeed){
-                maxspeed=listp.getTeam().get(w).speed;
-                id=w;
 
-            }
 
-        }
-
-        final int[] i = {id};
+        final int[] i = {0,0};
 
         Entrer.setOnClickListener(view -> {
 
@@ -131,7 +144,7 @@ public class Game extends AppCompatActivity {
             Entrer.setVisibility(View.INVISIBLE);
             Pseudo.setVisibility(View.INVISIBLE);
             interfaceCombat.setVisibility(View.VISIBLE);
-            get_character(i[0],mana,Pv,listp,Nom,ListSorts);
+            get_character(i[0],mana,Pv,listp,Nom);
             i[0]++;
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -146,26 +159,21 @@ public class Game extends AppCompatActivity {
 
         });
 
-        //retirer fonction next et le bouton qui va avec
         Next.setOnClickListener(view -> {
-            if (i[0] >= listp.getTeam().size()) {
+            if (i[0] >= 3) {
                 i[0] = 0;
-
-
             }
-
-            get_character(i[0],mana,Pv,listp,Nom,ListSorts);
-
+            i[1]=i[0];
+            get_character(i[0],mana,Pv,listp,Nom);
             i[0]++;
-
-
-
         });
         Sorts.setOnClickListener(view -> {
             Next.setVisibility(View.INVISIBLE);
             ListSorts.setVisibility(View.VISIBLE);
             interfaceCombat.setVisibility(View.INVISIBLE);
             retour.setVisibility(View.VISIBLE);
+            ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(i[1]).m_spell));
+
 
         });
         Attaquer.setOnClickListener(view -> {
@@ -173,6 +181,7 @@ public class Game extends AppCompatActivity {
             ListSorts.setVisibility(View.VISIBLE);
             interfaceCombat.setVisibility(View.INVISIBLE);
             retour.setVisibility(View.VISIBLE);
+            ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(i[1]).p_spell));
 
         });
         retour.setOnClickListener(view -> {
@@ -180,7 +189,7 @@ public class Game extends AppCompatActivity {
             interfaceCombat.setVisibility(View.VISIBLE);
             retour.setVisibility(View.INVISIBLE);
             Next.setVisibility(View.VISIBLE);
-
+            ListeMob.setVisibility(View.INVISIBLE);
         });
 
 

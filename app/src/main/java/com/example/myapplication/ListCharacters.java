@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class ListCharacters {
@@ -205,4 +206,20 @@ public class ListCharacters {
     public ArrayList<Characters> getTeam() {
         return team;
     }
-}
+    public void InitChara(){
+
+        int index;
+        Random rand= new Random();
+
+
+        for (int i=0;i<3;i++) {
+            index = rand.nextInt(10);
+            this.addTeam(this.list_c.get(index));
+        }
+        for (int i2=0;i2<3;i2++){
+            index=rand.nextInt(9);
+            this.addTeam(this.list_c.get(10+index));
+        }
+
+
+}}

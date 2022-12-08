@@ -308,6 +308,20 @@
         app:layout_constraintBottom_toTopOf="@+id/List_sort"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ListView
+        android:id="@+id/ListeMob"
+        android:layout_width="253dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="1dp"
+        android:numColumns="1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/IntfCombat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toEndOf="@+id/Pseudo"
+        app:layout_constraintTop_toBottomOf="@+id/personnage"
+        app:layout_constraintVertical_bias="0.283" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

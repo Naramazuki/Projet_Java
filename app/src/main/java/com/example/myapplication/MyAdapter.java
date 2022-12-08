@@ -5,12 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.TableLayout;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 
 public class MyAdapter extends BaseAdapter {
     private final ArrayList<Spell> ListSorts;
@@ -20,6 +17,7 @@ public class MyAdapter extends BaseAdapter {
         this.inflater=LayoutInflater.from(ct);
 
     }
+
     @Override
     public int getCount() {
         return this.ListSorts.size();
@@ -45,12 +43,7 @@ public class MyAdapter extends BaseAdapter {
         TextView Cout=view.findViewById(R.id.cout_pm);
         TableLayout sort = view.findViewById(R.id.Sort);
 
-        sort.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("OK");
-            }
-        });
+
         int pow=CurrentItem.power;
         String NomSort=CurrentItem.getName();
         NameSpell.setText(NomSort);
