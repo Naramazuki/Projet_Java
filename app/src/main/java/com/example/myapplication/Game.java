@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
@@ -21,12 +20,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.myapplication.databinding.ActivityMainBinding;
-
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Game extends AppCompatActivity {
+    //affichage du personnage qui joue
     public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom){
 
 
@@ -37,27 +36,29 @@ public class Game extends AppCompatActivity {
 
 
     }
-    //faire changement de la structure d'affichae des personnages et utiliser gridview qui facilite grandement la tache
-    public void personnage(TextView nom,TextView pv, ProgressBar pvBar,ImageView icon){
-        if(nom.getVisibility()==View.VISIBLE){
-            nom.setVisibility(View.INVISIBLE);
-            pv.setVisibility(View.INVISIBLE);
-            pvBar.setVisibility(View.INVISIBLE);
-            icon.setVisibility(View.INVISIBLE);
+    public ArrayList<Characters> restTeam(ListCharacters l, int[] i){
+        ArrayList <Characters> rest_team= new ArrayList<>();
+        for (int j = 0; j <3; j++) {
+            if(j!=i[0] && l.getTeam().get(j).ally){
+                rest_team.add(l.getTeam().get(j));
+
+            }
         }
-        else{
-            nom.setVisibility(View.VISIBLE);
-            pv.setVisibility(View.VISIBLE);
-            pvBar.setVisibility(View.VISIBLE);
-            icon.setVisibility(View.VISIBLE);
-        }
+        return rest_team;
     }
+
+    //choisir aléatoirement le fond de combat
+    public int randBackground(int[] back){
+        Random random=new Random();
+        return back[random.nextInt(back.length)];
+    }
+    //recupère la liste des ennmies
     public ArrayList<Characters> getEnemy(ListCharacters l){
         ArrayList<Characters> ListEnemy = new ArrayList<>();
-        for (int i = 0; i < l.getTeam().size() ; i++) {
+        for (int i = 3; i < l.getTeam().size() ; i++) {
             if(!l.getTeam().get(i).ally){
                 ListEnemy.add(l.getTeam().get(i));
-                System.out.println(l.getTeam().get(i).name);
+
             }
 
         }
@@ -88,34 +89,30 @@ public class Game extends AppCompatActivity {
         TextView Nom=findViewById(R.id.Nom);
         Button Attaquer=findViewById(R.id.ATTAQUER);
         GridView ListSorts=findViewById(R.id.List_sort);
-        ImageView imagePerso=findViewById(R.id.ImagePerso);
-        TextView nomEnnemy = findViewById(R.id.Nom_Ennemie);
-        TextView pvEnnemy = findViewById(R.id.Pv_Ennemy);
-        ProgressBar Pv_Ennemy = findViewById(R.id.PvBar_Ennemy);
-        ImageView iconEnnemy = findViewById(R.id.Icon_Ennemy);
         ListView ListeMob=findViewById(R.id.ListeMob);
-
-
+        GridView EnemyTeam=findViewById(R.id.Enemy_team);
+        GridView Team=findViewById(R.id.Team);
+        int [] characters={R.drawable.character,R.drawable.character3,R.drawable.character2};
+        int [] Backgrounds={R.drawable.battle_background,R.drawable.background1,R.drawable.backgound2,R.drawable.background3,R.drawable.background4,R.drawable.background5};
         //creation du premier personnage et ajout des listes equipe et sort pour tests
         ListCharacters listp= new ListCharacters();
-        ListSpell lists= new ListSpell();
 
         listp.collection();
         listp.InitChara();
 
-        //fixer l'adapter
+
         ListSorts.setOnItemClickListener((adapterView, view, i, l) -> {
             ListSorts.setVisibility(View.INVISIBLE);
-            ListeMob.setVisibility(View.VISIBLE);
-            ListeMob.setAdapter(new AdapterMob(getApplicationContext(),getEnemy(listp)));
+            ListeMob.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Toast.makeText(getApplicationContext(),"taillade tes veines ",Toast.LENGTH_SHORT).show();
+                }
+            });
 
         });
-        ListeMob.setOnItemClickListener((adapterView, view, i, l) -> {
-            // mettre en place interaction avec les pVs
-            Toast.makeText(getApplicationContext(),"taillade tes veines ",Toast.LENGTH_SHORT).show();
 
-        });
-                // faire une gridwiew listmob
+
 
         Pseudo.addTextChangedListener(new TextWatcher() {
             @Override
@@ -140,11 +137,12 @@ public class Game extends AppCompatActivity {
 
         Entrer.setOnClickListener(view -> {
 
-            layout.setBackgroundResource(R.drawable.battle_background);
+            layout.setBackgroundResource(randBackground(Backgrounds));
             Entrer.setVisibility(View.INVISIBLE);
             Pseudo.setVisibility(View.INVISIBLE);
             interfaceCombat.setVisibility(View.VISIBLE);
             get_character(i[0],mana,Pv,listp,Nom);
+            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),characters));
             i[0]++;
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -155,7 +153,11 @@ public class Game extends AppCompatActivity {
             bar.setVisibility(View.INVISIBLE);
 
             interfacePersonnage.setVisibility(View.VISIBLE);
-            imagePerso.setVisibility(View.VISIBLE);
+            ListeMob.setVisibility(View.VISIBLE);
+            ListeMob.setAdapter(new AdapterMob(getApplicationContext(),getEnemy(listp)));
+            EnemyTeam.setAdapter(new AdapterEnemyLogo(getApplicationContext(),getEnemy(listp)));
+
+
 
         });
 
@@ -165,6 +167,8 @@ public class Game extends AppCompatActivity {
             }
             i[1]=i[0];
             get_character(i[0],mana,Pv,listp,Nom);
+            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),characters));
+            Toast.makeText(getApplicationContext(),"Bienvenue "+restTeam(listp,i).size(),Toast.LENGTH_SHORT).show();
             i[0]++;
         });
         Sorts.setOnClickListener(view -> {
@@ -189,7 +193,7 @@ public class Game extends AppCompatActivity {
             interfaceCombat.setVisibility(View.VISIBLE);
             retour.setVisibility(View.INVISIBLE);
             Next.setVisibility(View.VISIBLE);
-            ListeMob.setVisibility(View.INVISIBLE);
+
         });
 
 

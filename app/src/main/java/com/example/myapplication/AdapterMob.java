@@ -48,7 +48,7 @@ public class AdapterMob extends BaseAdapter {
 
             String NomduMob=CurrentItem.name;
             int PvMob=CurrentItem.hp_act;
-           
+
             Pv.setText("PV: "+PvMob);
 
             NomMob.setText(NomduMob);

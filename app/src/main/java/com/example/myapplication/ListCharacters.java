@@ -212,13 +212,18 @@ public class ListCharacters {
         Random rand= new Random();
 
 
-        for (int i=0;i<3;i++) {
+        while(this.getTeam().size()<3){
             index = rand.nextInt(10);
-            this.addTeam(this.list_c.get(index));
+            if(!this.getTeam().contains(this.list_c.get(index))){
+                this.addTeam(this.list_c.get(index));
+            }
+
         }
-        for (int i2=0;i2<3;i2++){
+        while(this.getTeam().size()<6){
             index=rand.nextInt(9);
-            this.addTeam(this.list_c.get(10+index));
+            if(!this.getTeam().contains(this.list_c.get(index))){
+                this.addTeam(this.list_c.get(10+index));
+            }
         }
 
 

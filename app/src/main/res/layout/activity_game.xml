@@ -113,8 +113,8 @@
 
     <TableLayout
         android:id="@+id/personnage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="733dp"
+        android:layout_height="150dp"
         android:visibility="invisible"
 
 
@@ -152,7 +152,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btn"
                 android:gravity="center"
-                android:text="567/565PV" />
+                android:text="567/565PV"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/NextChara"
@@ -161,35 +162,6 @@
                 android:background="@drawable/btn"
                 android:gravity="center"
                 android:text="Next" />
-
-            <TextView
-                android:id="@+id/Pv_Ennemy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/btn"
-                android:gravity="center"
-
-                android:text="50/50PV" />
-
-            <ProgressBar
-                android:id="@+id/PvBar_Ennemy"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="180dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                android:progress="100"
-
-
-                android:progressTint="#4CAF50" />
-
-            <ImageView
-                android:id="@+id/Icon_Ennemy"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/one_punch" />
 
         </TableRow>
 
@@ -203,7 +175,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="@color/white"/>
 
             <ProgressBar
                 android:id="@+id/ManaBar"
@@ -224,7 +197,8 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/btn"
                 android:gravity="center"
-                android:text="200/200PM" />
+                android:text="200/200PM"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/textView6"
@@ -232,16 +206,9 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/btn"
                 android:gravity="center"
-                android:text="Versus" />
+                android:text="Versus"
+                android:textColor="@color/white"/>
 
-            <TextView
-                android:id="@+id/Nom_Ennemie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="6"
-                android:background="@drawable/btn"
-                android:gravity="center"
-                android:text="Monster" />
         </TableRow>
 
         <TableRow
@@ -255,12 +222,14 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn"
                 android:gravity="center"
-                android:text="LV 1" />
+                android:text="LV 1"
+                android:textColor="@color/white"
+                />
         </TableRow>
 
         <TableRow
-            android:layout_width="780dp"
-            android:layout_height="72dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
@@ -271,19 +240,6 @@
         </TableRow>
     </TableLayout>
 
-
-    <ImageView
-        android:id="@+id/ImagePerso"
-        android:layout_width="139dp"
-        android:layout_height="152dp"
-        android:background="@drawable/personnage"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Pseudo"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57" />
 
     <GridView
         android:id="@+id/List_sort"
@@ -302,25 +258,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="55dp"
-        android:text="Retour"
         android:background="@drawable/btn"
+        android:text="Retour"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/List_sort"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/ListeMob"
-        android:layout_width="253dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="157dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="45dp"
         android:numColumns="1"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/IntfCombat"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.844"
         app:layout_constraintStart_toEndOf="@+id/Pseudo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <GridView
+        android:id="@+id/Enemy_team"
+        android:layout_width="110dp"
+        android:layout_height="333dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ListeMob"
+        app:layout_constraintStart_toEndOf="@+id/Pseudo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <GridView
+        android:id="@+id/Team"
+        android:layout_width="172dp"
+        android:layout_height="262dp"
+        app:layout_constraintBottom_toTopOf="@+id/IntfCombat"
+        app:layout_constraintEnd_toStartOf="@+id/Pseudo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/retour"
         app:layout_constraintTop_toBottomOf="@+id/personnage"
-        app:layout_constraintVertical_bias="0.283" />
+        app:layout_constraintVertical_bias="0.533" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
