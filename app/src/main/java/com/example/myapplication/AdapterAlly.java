@@ -48,10 +48,10 @@ public class AdapterAlly extends BaseAdapter {
         view=inflater.inflate(R.layout.adapter_equipe_enemy,null);
         Characters CurrentItem= (Characters) getItem(i);
         ImageView LogoEnemy=view.findViewById(R.id.Image_Enemy);
-        ProgressBar hp_enemy=view.findViewById(R.id.PvBar_Enemy);
+        ProgressBar pv_allie=view.findViewById(R.id.PvBar_Enemy);
         LogoEnemy.setBackgroundResource(charList[i]);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            hp_enemy.setProgress((int)CurrentItem.hp/100*CurrentItem.hp_act,true);
+            pv_allie.setProgress((int)CurrentItem.hp/100*CurrentItem.hp_act,true);
         }
 
 

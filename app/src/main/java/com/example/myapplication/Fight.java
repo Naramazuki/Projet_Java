@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import javax.xml.stream.events.Characters;
 
 public class Fight {
     ArrayList<Characters> Protagonists;
@@ -18,13 +17,13 @@ public class Fight {
         sorted_Entity=new ArrayList<>();
         sorted_Entity.addAll(Protagonists);
         sorted_Entity.addAll(Antagonists);
-        Collections.sort(sorted_Entity,new Comparator<T>() {
+        Collections.sort(sorted_Entity,new Comparator<Characters>() {
             @Override
-            publicint compare(Characters c1, Characters c2){
+            public int compare(Characters c1, Characters c2){
                 if (c1.getSpeed()<c2.getSpeed()){
                     return -1;
                 }
-                else if (c1.getSpeed()==c2.getSpeed){
+                else if (c1.getSpeed()==c2.getSpeed()){
                     return 0;
                 }
                 else{
@@ -41,7 +40,7 @@ public class Fight {
         }
         else{
             //IA action
-            print("mais rien ne se passe");
+            System.out.println("mais rien ne se passe");
         }
     }
 
@@ -54,7 +53,7 @@ public class Fight {
             index_Characters_atm=0;
             Characters_atm=sorted_Entity.get(index_Characters_atm);
             for (int i=0;i<sorted_Entity.size();i++){
-                sorted_Entity.get(i).setMana(min(sorted_Entity.get(i).getMana()+20),sorted_Entity.get(i).getMana_max());
+                sorted_Entity.get(i).setMana(Math.min((sorted_Entity.get(i).getMana()+20),sorted_Entity.get(i).getMana_max()));
             }
             nb_turn++;
         }
@@ -81,7 +80,7 @@ public class Fight {
     }
 
     public void end_fight(){
-        system.out.println("Fin");
+        System.out.println("Fin");
     }
 
     public void effet_spell_off_mono(Characters lanceur, Characters receveur,Spell sort){
@@ -96,14 +95,14 @@ public class Fight {
 
     public void damages(Characters receveur,Spell sort){
         if (sort.isMagical()){
-            receveur.setHp(receveur.getHp()- Math.max(0,sort.getPower()-receveur.getDef_m) );
+            receveur.setHp(receveur.getHp()- (int)Math.max(0,sort.getPower()-receveur.getDef_m()) );
         }
         else{
-            receveur.setHp(receveur.getHp()- Math.max(0,sort.getPower()-receveur.getDef_p) );
+            receveur.setHp(receveur.getHp()- (int)Math.max(0,sort.getPower()-receveur.getDef_p()) );
         }
     }
 
     public void heal(Characters receveur,Spell sort){
-        receveur.setHp(min(receveur.getHp()+sort.getPower(),receveur.getHp_max));
+        receveur.setHp(Math.min(receveur.getHp()+sort.getPower(),receveur.getHp_max()));
     }
 }
