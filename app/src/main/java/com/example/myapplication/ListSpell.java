@@ -23,7 +23,7 @@ public class ListSpell {
         list_s.add(new Spell(true,"Def Up",25,1,"Augmente les défenses d'un allié",13,15));
         list_s.add(new Spell(true,"Resurge",0,2,"Permet à une unité d'agir directement",14,25));
         list_s.add(new Spell(true,"Fire Lance",15,2,"Tire une lance de feu sur un ennemi",15,10));
-        list_s.add(new Spell(false,"Devastation",50,2,"Inlige de lour dégats sur une cible",16,25));
+        list_s.add(new Spell(false,"Devastation",50,2,"Inlige de lourds dégats sur une cible",16,25));
         list_s.add(new Spell(false,"Destruction",25,1,"Attaque simple infligeant des dégats",17,10));
         list_s.add(new Spell(false,"Aura of Doom",0,3,"Dégage une aura qui reduit les stats de moitié",18,100,true));
         list_s.add(new Spell(false,"Aura of Despair",0,2,"Dégage une aura qui réduit les stats d'un quart",19,50,true));
