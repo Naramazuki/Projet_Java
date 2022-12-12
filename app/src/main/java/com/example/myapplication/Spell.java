@@ -61,4 +61,10 @@ public class Spell {
     public void setPower(int power) {
         this.power = power;
     }
+    public int getCost(){
+        return this.cost;
+    }
+    public boolean getAoe(){
+        return this.aoe;
+    }
 }

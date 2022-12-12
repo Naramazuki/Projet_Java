@@ -73,8 +73,8 @@ public class Characters {
     }
 
     public void lvlup(Characters c){
-        c.hp=c.hp*2;
-        c.mana=c.mana*2;
+        c.hp_max=c.hp_max*2;
+        c.mana_max=c.mana_max*2;
         c.speed=c.speed++;
         c.atk_m=c.atk_m*1.5;
         c.atk_p=c.atk_p*1.5;
@@ -164,5 +164,11 @@ public class Characters {
 
     public void setMana(int mana) {
         this.mana = mana;
+    }
+    public int getHp_max(){
+        return hp_max;
+    }
+    public int getMana_max(){
+        return mana_max;
     }
 }
