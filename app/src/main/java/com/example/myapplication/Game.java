@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 
 import android.content.pm.ActivityInfo;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
@@ -26,14 +28,14 @@ import java.util.Random;
 
 public class Game extends AppCompatActivity {
     //affichage du personnage qui joue
-    public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom){
+    public void get_character(int id,TextView mana, TextView Pv,ListCharacters listp,TextView Nom,int []char_Icon_List,ImageView icon){
 
 
 
         mana.setText(listp.getTeam().get(id).mana_act+"/"+listp.getTeam().get(id).mana+"PM");
         Pv.setText(listp.getTeam().get(id).hp_act+"/"+listp.getTeam().get(id).hp+"PV");
         Nom.setText(listp.getTeam().get(id).name);
-
+        icon.setBackgroundResource(char_Icon_List[id]);
 
     }
     public ArrayList<Characters> restTeam(ListCharacters l, int[] i){
@@ -64,7 +66,19 @@ public class Game extends AppCompatActivity {
         }
         return(ListEnemy);
     }
+    public int[] get_image(int[] charlist,int id){
+        int[] chara= new int[2];
+        int w=0;
+        for (int i = 0; i <charlist.length ; i++) {
+            if(i!=id){
+                chara[w]=charlist[i];
+                w++;
+            }
 
+        }
+        return chara;
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +96,7 @@ public class Game extends AppCompatActivity {
         Button Next=findViewById(R.id.NextChara);
         Button Sorts=findViewById(R.id.SORTS);
         Button retour=findViewById(R.id.retour);
+        ImageView icon= findViewById(R.id.Icon_Personnage);
         ConstraintLayout layout=findViewById(R.id.Background);
         TableLayout interfaceCombat= findViewById(R.id.IntfCombat);
         ProgressBar bar =findViewById(R.id.progressBar3);
@@ -141,8 +156,8 @@ public class Game extends AppCompatActivity {
             Entrer.setVisibility(View.INVISIBLE);
             Pseudo.setVisibility(View.INVISIBLE);
             interfaceCombat.setVisibility(View.VISIBLE);
-            get_character(i[0],mana,Pv,listp,Nom);
-            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),characters));
+            get_character(i[0],mana,Pv,listp,Nom,characters,icon);
+            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),get_image(characters,i[0])));
             i[0]++;
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -166,8 +181,8 @@ public class Game extends AppCompatActivity {
                 i[0] = 0;
             }
             i[1]=i[0];
-            get_character(i[0],mana,Pv,listp,Nom);
-            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),characters));
+            get_character(i[0],mana,Pv,listp,Nom,characters,icon);
+            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),get_image(characters,i[0])));
             Toast.makeText(getApplicationContext(),"Perso "+restTeam(listp,i).get(0).hp+" Perso 2:"+restTeam(listp,i).get(1).hp,Toast.LENGTH_SHORT).show();
             i[0]++;
         });
