@@ -168,7 +168,7 @@ public class Game extends AppCompatActivity {
             i[1]=i[0];
             get_character(i[0],mana,Pv,listp,Nom);
             Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),characters));
-            Toast.makeText(getApplicationContext(),"Bienvenue "+restTeam(listp,i).size(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Perso "+restTeam(listp,i).get(0).hp+" Perso 2:"+restTeam(listp,i).get(1).hp,Toast.LENGTH_SHORT).show();
             i[0]++;
         });
         Sorts.setOnClickListener(view -> {
