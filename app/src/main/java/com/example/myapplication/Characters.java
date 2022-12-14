@@ -164,5 +164,7 @@ public class Characters {
     }
     public int getMana_max(){
         return mana;
+
+
     }
 }

@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 
 import android.content.pm.ActivityInfo;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -48,6 +47,16 @@ public class Game extends AppCompatActivity {
         }
         return rest_team;
     }
+    public ArrayList<Characters> restTeam(ArrayList<Characters> l, int[] i){
+        ArrayList <Characters> rest_team= new ArrayList<>();
+        for (int j = 0; j <3; j++) {
+            if(j!=i[0] && l.get(j).ally){
+                rest_team.add(l.get(j));
+
+            }
+        }
+        return rest_team;
+    }
 
     //choisir aléatoirement le fond de combat
     public int randBackground(int[] back){
@@ -59,6 +68,17 @@ public class Game extends AppCompatActivity {
         ArrayList<Characters> ListEnemy = new ArrayList<>();
         for (int i = 3; i < l.getTeam().size() ; i++) {
             if(!l.getTeam().get(i).ally){
+                ListEnemy.add(l.getTeam().get(i));
+
+            }
+
+        }
+        return(ListEnemy);
+    }
+    public ArrayList<Characters> getAlly(ListCharacters l){
+        ArrayList<Characters> ListEnemy = new ArrayList<>();
+        for (int i = 0; i < 3 ; i++) {
+            if(l.getTeam().get(i).ally){
                 ListEnemy.add(l.getTeam().get(i));
 
             }
@@ -109,22 +129,58 @@ public class Game extends AppCompatActivity {
         GridView Team=findViewById(R.id.Team);
         int [] characters={R.drawable.character,R.drawable.character3,R.drawable.character2};
         int [] Backgrounds={R.drawable.battle_background,R.drawable.background1,R.drawable.backgound2,R.drawable.background3,R.drawable.background4,R.drawable.background5};
-        //creation du premier personnage et ajout des listes equipe et sort pour tests
+        //Creation de toutes les variables necessaires
         ListCharacters listp= new ListCharacters();
+        final int[] i = {0,0};
+        Fight Deroulement=new Fight();
 
+        //initialisation de la liste des personnages
         listp.collection();
         listp.InitChara();
+        //initialisation des fonctions de deroulement du jeu
+        Deroulement.Antagonists=getEnemy(listp);
+        Deroulement.Protagonists=getAlly(listp);
 
-
-        ListSorts.setOnItemClickListener((adapterView, view, i, l) -> {
+        //action suite à la pression d'un sort
+        ListSorts.setOnItemClickListener((adapterView, view, Position, l) -> {
             ListSorts.setVisibility(View.INVISIBLE);
+            Spell s=(Spell) ListSorts.getAdapter().getItem(Position);
+
+            //Toast.makeText(getApplicationContext()," Sort: "+ s.name,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext()," Lanceur: "+ Deroulement.Protagonists.get(i[0]).name,Toast.LENGTH_SHORT).show();
             ListeMob.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Toast.makeText(getApplicationContext(),"taillade tes veines ",Toast.LENGTH_SHORT).show();
+                public void onItemClick(AdapterView<?> adapterView, View view, int Position, long l) {
+                    Characters mob=(Characters) ListeMob.getAdapter().getItem(Position);
+                    interfaceCombat.setVisibility(View.VISIBLE);
+                    Deroulement.addAction(Deroulement.start_action(Deroulement.Characters_atm,s,mob));
+                    //Toast.makeText(getApplicationContext()," Mob: "+ mob.name,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext()," ListAction: "+ Deroulement.ActionList.size(),Toast.LENGTH_SHORT).show();
+
+                    i[0]++;
+
+
+                    //affchage du personnage suivant
+                    if(i[0]==3) {
+
+                        if (Deroulement.end_action()) {
+                            //si fin  de tour on effectue la mise à jour des pv et du mana des personnages
+                            i[0] = 0;
+                            ListeMob.setAdapter(new AdapterMob(getApplicationContext(), Deroulement.Antagonists));
+                            System.out.println("ok");
+
+
+                        }
+                    }
+                    Deroulement.Characters_atm=Deroulement.Protagonists.get(i[0]);
+                    Deroulement.index_Characters_atm=i[0];
+                    i[1]=i[0];
+                    get_character(i[0],mana,Pv,listp,Nom,characters,icon);
+                    Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(Deroulement.Protagonists,i),get_image(characters,i[0])));
+
+
                 }
             });
-
         });
 
 
@@ -148,7 +204,7 @@ public class Game extends AppCompatActivity {
 
 
 
-        final int[] i = {0,0};
+
 
         Entrer.setOnClickListener(view -> {
 
@@ -156,9 +212,11 @@ public class Game extends AppCompatActivity {
             Entrer.setVisibility(View.INVISIBLE);
             Pseudo.setVisibility(View.INVISIBLE);
             interfaceCombat.setVisibility(View.VISIBLE);
+            Deroulement.start_battle();
+
             get_character(i[0],mana,Pv,listp,Nom,characters,icon);
-            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),get_image(characters,i[0])));
-            i[0]++;
+            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(Deroulement.Protagonists,i),get_image(characters,i[0])));
+
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 bar.setProgress(100,true);
@@ -176,22 +234,14 @@ public class Game extends AppCompatActivity {
 
         });
 
-        Next.setOnClickListener(view -> {
-            if (i[0] >= 3) {
-                i[0] = 0;
-            }
-            i[1]=i[0];
-            get_character(i[0],mana,Pv,listp,Nom,characters,icon);
-            Team.setAdapter(new AdapterAlly(getApplicationContext(),restTeam(listp,i),get_image(characters,i[0])));
-            Toast.makeText(getApplicationContext(),"Perso "+restTeam(listp,i).get(0).hp+" Perso 2:"+restTeam(listp,i).get(1).hp,Toast.LENGTH_SHORT).show();
-            i[0]++;
-        });
+
         Sorts.setOnClickListener(view -> {
             Next.setVisibility(View.INVISIBLE);
             ListSorts.setVisibility(View.VISIBLE);
             interfaceCombat.setVisibility(View.INVISIBLE);
             retour.setVisibility(View.VISIBLE);
             ListSorts.setAdapter(new MyAdapter(this,listp.getTeam().get(i[1]).m_spell));
+
 
 
         });
