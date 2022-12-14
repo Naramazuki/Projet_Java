@@ -66,22 +66,17 @@ public class Characters {
         this.exp_given=exp_given;
     }
 
-    public void lvlup(){
-        this.hp=this.hp*2;
-        this.mana=this.mana*2;
-        this.speed=this.speed++;
-        this.atk_m=this.atk_m*1.5;
-        this.atk_p=this.atk_p*1.5;
-        this.def_m=this.def_m*1.5;
-        this.def_p=this.def_p*1.5;
-        this.level++;
-        this.exp_needed=this.level;
+    public void lvlup(Characters c){
+        c.hp=c.hp*2;
+        c.mana=c.mana*2;
+        c.speed=c.speed++;
+        c.atk_m=c.atk_m*1.5;
+        c.atk_p=c.atk_p*1.5;
+        c.def_m=c.def_m*1.5;
+        c.def_p=c.def_p*1.5;
+        c.level++;
+        c.exp_needed=c.level;
 
-    }
-
-    public void fullHeal(){
-        this.hp_act=this.hp;
-        this.mana_act=this.mana;
     }
 
     public void addSpell(Spell s){
@@ -163,5 +158,13 @@ public class Characters {
 
     public void setMana(int mana) {
         this.mana = mana;
+    }
+    public int getHp_max(){
+        return hp;
+    }
+    public int getMana_max(){
+        return mana;
+
+
     }
 }

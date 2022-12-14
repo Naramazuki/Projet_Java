@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class MyAdapter extends BaseAdapter {
     private final ArrayList<Spell> ListSorts;
     private final LayoutInflater inflater;
+
     public MyAdapter(Context ct, ArrayList<Spell> liste){
         this.ListSorts=liste;
         this.inflater=LayoutInflater.from(ct);
@@ -51,11 +52,15 @@ public class MyAdapter extends BaseAdapter {
         Description.setText(descrip);
         int couts=CurrentItem.cost;
         Powerm.setText("Degâts: "+pow);
-
-
         Cout.setText(couts+" PM");
+
+
+
+
+
 
 
         return view;
     }
+
 }
