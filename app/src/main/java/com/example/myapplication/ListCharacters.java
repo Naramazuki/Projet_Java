@@ -83,38 +83,10 @@ public class ListCharacters {
         this.list_c.get(9).addSpell(ls.list_s.get(26));
         this.list_c.get(9).addSpell(ls.list_s.get(23));
 
-        this.addList(true,9999,9999,"Hero test",10,1,1,1,1,1);
-        this.list_c.get(10).addSpell(ls.list_s.get(0));
-        this.list_c.get(10).addSpell(ls.list_s.get(1));
-        this.list_c.get(10).addSpell(ls.list_s.get(2));
+        this.addList(false,10000,400,"Nergigante",10,50,100,100,40,40);
         this.list_c.get(10).addSpell(ls.list_s.get(3));
-        this.list_c.get(10).addSpell(ls.list_s.get(4));
-        this.list_c.get(10).addSpell(ls.list_s.get(5));
-        this.list_c.get(10).addSpell(ls.list_s.get(6));
-        this.list_c.get(10).addSpell(ls.list_s.get(7));
-        this.list_c.get(10).addSpell(ls.list_s.get(8));
-        this.list_c.get(10).addSpell(ls.list_s.get(9));
-        this.list_c.get(10).addSpell(ls.list_s.get(10));
-        this.list_c.get(10).addSpell(ls.list_s.get(11));
-        this.list_c.get(10).addSpell(ls.list_s.get(12));
-        this.list_c.get(10).addSpell(ls.list_s.get(13));
-        this.list_c.get(10).addSpell(ls.list_s.get(14));
-        this.list_c.get(10).addSpell(ls.list_s.get(15));
-        this.list_c.get(10).addSpell(ls.list_s.get(16));
         this.list_c.get(10).addSpell(ls.list_s.get(17));
-        this.list_c.get(10).addSpell(ls.list_s.get(18));
-        this.list_c.get(10).addSpell(ls.list_s.get(19));
-        this.list_c.get(10).addSpell(ls.list_s.get(20));
-        this.list_c.get(10).addSpell(ls.list_s.get(21));
-        this.list_c.get(10).addSpell(ls.list_s.get(22));
-        this.list_c.get(10).addSpell(ls.list_s.get(23));
-        this.list_c.get(10).addSpell(ls.list_s.get(24));
-        this.list_c.get(10).addSpell(ls.list_s.get(25));
-        this.list_c.get(10).addSpell(ls.list_s.get(26));
-        this.list_c.get(10).addSpell(ls.list_s.get(27));
-        this.list_c.get(10).addSpell(ls.list_s.get(28));
-        this.list_c.get(10).addSpell(ls.list_s.get(29));
-        this.list_c.get(10).addSpell(ls.list_s.get(30));
+        this.list_c.get(10).addSpell(ls.list_s.get(16));
 
         this.addList(false,10000,400,"Magnamalo",11,50,100,100,40,40);
         this.list_c.get(11).addSpell(ls.list_s.get(16));
@@ -146,12 +118,38 @@ public class ListCharacters {
         this.list_c.get(16).addSpell(ls.list_s.get(28));
         this.list_c.get(16).addSpell(ls.list_s.get(1));
 
-        this.addList(false,10000,400,"Nergigante",17,50,100,100,40,40);
+        this.addList(true,9999,9999,"Hero test",17,1,1,1,1,1);
+        this.list_c.get(17).addSpell(ls.list_s.get(0));
+        this.list_c.get(17).addSpell(ls.list_s.get(1));
+        this.list_c.get(17).addSpell(ls.list_s.get(2));
         this.list_c.get(17).addSpell(ls.list_s.get(3));
-        this.list_c.get(17).addSpell(ls.list_s.get(17));
+        this.list_c.get(17).addSpell(ls.list_s.get(4));
+        this.list_c.get(17).addSpell(ls.list_s.get(5));
+        this.list_c.get(17).addSpell(ls.list_s.get(6));
+        this.list_c.get(17).addSpell(ls.list_s.get(7));
+        this.list_c.get(17).addSpell(ls.list_s.get(8));
+        this.list_c.get(17).addSpell(ls.list_s.get(9));
+        this.list_c.get(17).addSpell(ls.list_s.get(10));
+        this.list_c.get(17).addSpell(ls.list_s.get(11));
+        this.list_c.get(17).addSpell(ls.list_s.get(12));
+        this.list_c.get(17).addSpell(ls.list_s.get(13));
+        this.list_c.get(17).addSpell(ls.list_s.get(14));
+        this.list_c.get(17).addSpell(ls.list_s.get(15));
         this.list_c.get(17).addSpell(ls.list_s.get(16));
-
-
+        this.list_c.get(17).addSpell(ls.list_s.get(17));
+        this.list_c.get(17).addSpell(ls.list_s.get(18));
+        this.list_c.get(17).addSpell(ls.list_s.get(19));
+        this.list_c.get(17).addSpell(ls.list_s.get(20));
+        this.list_c.get(17).addSpell(ls.list_s.get(21));
+        this.list_c.get(17).addSpell(ls.list_s.get(22));
+        this.list_c.get(17).addSpell(ls.list_s.get(23));
+        this.list_c.get(17).addSpell(ls.list_s.get(24));
+        this.list_c.get(17).addSpell(ls.list_s.get(25));
+        this.list_c.get(17).addSpell(ls.list_s.get(26));
+        this.list_c.get(17).addSpell(ls.list_s.get(27));
+        this.list_c.get(17).addSpell(ls.list_s.get(28));
+        this.list_c.get(17).addSpell(ls.list_s.get(29));
+        this.list_c.get(17).addSpell(ls.list_s.get(30));
 
         this.addList(false,9999,9999,"Boss test",18,1,1,1,1,1);
         this.list_c.get(18).addSpell(ls.list_s.get(0));
@@ -186,6 +184,11 @@ public class ListCharacters {
         this.list_c.get(18).addSpell(ls.list_s.get(29));
         this.list_c.get(18).addSpell(ls.list_s.get(30));
 
+        this.addList(false,150,25,"Gobelin junior",16,55,15,15,5,80);
+        this.list_c.get(19).addSpell(ls.list_s.get(20));
+        this.list_c.get(19).addSpell(ls.list_s.get(28));
+        this.list_c.get(19).addSpell(ls.list_s.get(1));
+
     }
 
     public Characters duplicate(int index){
@@ -214,18 +217,13 @@ public class ListCharacters {
         Random rand= new Random();
 
 
-        while(this.getTeam().size()<3){
-            index = rand.nextInt(11);
-            if(!this.getTeam().contains(this.list_c.get(index))){
-                this.addTeam(this.list_c.get(index));
-            }
-
+        for (int i=0;i<3;i++) {
+            index = rand.nextInt(10);
+            this.addTeam(this.list_c.get(index));
         }
-        while(this.getTeam().size()<6){
-            index=rand.nextInt(8);
-            if(!this.getTeam().contains(this.list_c.get(11+index))){
-                this.addTeam(this.list_c.get(11+index));
-            }
+        for (int i2=0;i2<3;i2++){
+            index=rand.nextInt(9);
+            this.addTeam(this.list_c.get(10+index));
         }
 
 
